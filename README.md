@@ -19,8 +19,6 @@ To test your system, a smaller sample file
 (sample_booking_requests) is supplied; processing this file
 should yield 10 rejected requests.
 
- 
-
 The text file of bookings contains one booking per line,
 where a booking is of the following form:
 
@@ -29,3 +27,11 @@ where a booking is of the following form:
 
 Rows and seats are both 0-indexed. Note the trailing comma is
 absent on the final line.
+
+To run it:
+
+./bin/process_bookings sample_booking_requests
+
+To run specs
+
+bundle exec rspec spec

@@ -1,4 +1,9 @@
 #!/usr/bin/env ruby 
 # frozen_string_literal: true
 
+require 'byebug'
 require_relative '../lib/bookings_processor'
+
+if __FILE__ == $PROGRAM_NAME
+  BookingsProcessor::Processor.process(ARGV[0])
+end

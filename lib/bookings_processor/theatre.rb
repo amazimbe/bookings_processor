@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'byebug'
 module BookingsProcessor
   class Theatre
     attr_reader :seats
@@ -9,7 +10,7 @@ module BookingsProcessor
     end
 
     def seats_available?(row, start_col, end_col)
-      seats[row][start_col, end_col+1].all?
+      seats[row][start_col..end_col].all?
     end
 
     def update_seats(row, start_col, end_col)
@@ -40,9 +41,9 @@ module BookingsProcessor
       row.each_with_index do |available, index|
         next unless available
 
-        return true if index == 0 && row[index+1] == false && row[index+2] == false
-        return true if index == row_length-1 && row[index-1] == false && row[index-2] == false
-        return true if row[index-1] == false && row[index+1] == false 
+        return true if index.zero? && row[index + 1] == false && row[index + 2] == false
+        return true if index == row_length - 1 && row[index - 1] == false && row[index - 2] == false
+        return true if row[index - 1] == false && row[index + 1] == false
       end
 
       false

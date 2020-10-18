@@ -15,9 +15,9 @@ module BookingsProcessor
 
     def valid?
       validate_same_row &&
-      validate_seat_count && 
-      theatre.seats_available?(start_row, start_col, end_col) &&
-      !theatre.leaves_single_available_seat?(start_row, start_col, end_col)
+        validate_seat_count &&
+        theatre.seats_available?(start_row, start_col, end_col) &&
+        !theatre.leaves_single_available_seat?(start_row, start_col, end_col)
     end
 
     private

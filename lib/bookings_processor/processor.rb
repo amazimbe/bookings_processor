@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
 require 'dotenv/load'
+require 'byebug'
 
 module BookingsProcessor
   class Processor
-    # moving these to .env did not work
-    THEATRE_ROWS = 100
-    THEATRE_COLS = 50
-
     attr_reader :rejects, :theatre
 
     def initialize
@@ -24,7 +21,7 @@ module BookingsProcessor
 
       File.foreach(filename) do |line|
         booking = Booking.new(theatre, parse(line))
-        
+
         if booking.valid?
           theatre.update_seats(booking.start_row, booking.start_col, booking.end_col)
         else
@@ -33,7 +30,6 @@ module BookingsProcessor
       end
 
       puts "#{rejects.length} bookings have been rejected"
-      theatre.seats.each {|s| puts s.join('-')}
     end
 
     private

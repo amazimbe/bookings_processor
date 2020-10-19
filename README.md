@@ -28,10 +28,16 @@ where a booking is of the following form:
 Rows and seats are both 0-indexed. Note the trailing comma is
 absent on the final line.
 
-To run it:
+### To run it:
 
-./bin/process_bookings sample_booking_requests
+./bin/process_bookings booking_requests
 
-To run specs
+### To run specs
 
 bundle exec rspec spec
+
+### TODO
+One of the specs is failing. When run on the sample data I get 
+9 rejected bookings instead of 10. My algorithm is probably
+missing an edge case but I would need to know the expected 
+rejects before I can fix this.

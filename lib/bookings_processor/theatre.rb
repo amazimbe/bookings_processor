@@ -13,7 +13,7 @@ module BookingsProcessor
       seats[row][start_col..end_col].all?
     end
 
-    def update_seats(row, start_col, end_col)
+    def book_seats(row, start_col, end_col)
       (start_col..end_col).each do |col|
         seats[row][col] = false
       end

@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'dotenv/load'
-require 'byebug'
-
 module BookingsProcessor
   class Processor
     attr_reader :rejects, :theatre
@@ -23,7 +20,7 @@ module BookingsProcessor
         booking = Booking.new(theatre, parse(line))
 
         if booking.valid?
-          theatre.update_seats(booking.start_row, booking.start_col, booking.end_col)
+          theatre.book_seats(booking.start_row, booking.start_col, booking.end_col)
         else
           rejects << booking.id
         end
@@ -34,6 +31,7 @@ module BookingsProcessor
 
     private
 
+    # ok for now but could be moved to a separate class
     def parse(line)
       line = line.gsub('(', '')
       line = line.gsub(')', '')

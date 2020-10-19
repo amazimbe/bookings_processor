@@ -5,6 +5,13 @@ require 'byebug'
 RSpec.describe BookingsProcessor::Theatre do
   subject(:theatre) { described_class.new(3, 3) }
 
+  describe '#book_seats' do
+    before { theatre.book_seats(1, 0, 2) }
+    it 'books seats' do
+      expect(theatre.seats[1].all?).to be false
+    end
+  end
+
   describe '#seats_available?' do
     it 'returns true if seats in the booking are available' do
       expect(theatre.seats_available?(1, 0, 1)).to be true
